@@ -68,14 +68,16 @@ const STATS = [
 ];
 
 const SKILLS = [
-  { name: "React.js", level: 95, group: "Frontend" },
-  { name: "Next.js", level: 90, group: "Frontend" },
-  { name: "JavaScript", level: 95, group: "Frontend" },
-  { name: "Tailwind CSS", level: 92, group: "Frontend" },
-  { name: "PHP", level: 90, group: "Backend" },
-  { name: "Laravel", level: 88, group: "Backend" },
-  { name: "MySQL", level: 90, group: "Database" },
-  { name: "REST APIs", level: 92, group: "Backend" },
+  { name: "HTML", level: 95, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+  { name: "CSS", level: 90, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+  { name: "JavaScript", level: 92, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "React.js", level: 90, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "Next.js", level: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", invert: true },
+  { name: "Tailwind CSS", level: 92, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+  { name: "PHP", level: 90, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+  { name: "Laravel", level: 88, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
+  { name: "MySQL", level: 90, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+  { name: "Git", level: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
 ];
 
 const TECH_STACK = [
