@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroAsset from "@/assets/wacky-hero.asset.json";
+import heroAsset from "@/assets/wacky-hero-2.png.asset.json";
 import {
   Code2,
   Database,
@@ -18,6 +18,8 @@ import {
   Rocket,
   Users,
   Briefcase,
+  ExternalLink,
+  Home,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -93,6 +95,7 @@ const PROJECTS = [
     icon: Building2,
     title: "Barangay Management Information System (BMIS)",
     tagline: "Digitizing barangay operations with a centralized management platform.",
+    url: "https://scc-digitized-barangay.online/",
     features: [
       "Barangay Clearance Management",
       "Resident Profiling & Records",
@@ -106,6 +109,24 @@ const PROJECTS = [
   },
   {
     n: "02",
+    icon: Home,
+    title: "AsuraTech Roofing — Corporate Website",
+    tagline: "Modern corporate website for a roofing company to showcase services and generate leads.",
+    url: "https://asuratech-roofing.vercel.app/",
+    features: [
+      "Modern Responsive Design",
+      "Company Profile & Branding",
+      "Roofing Services Showcase",
+      "Project Portfolio & Gallery",
+      "Customer Testimonials",
+      "Quotation Request Form",
+      "Google Maps Integration",
+      "SEO-Friendly Structure",
+    ],
+    goal: "Establish a professional online presence, build customer trust, and increase qualified leads through a conversion-focused website.",
+  },
+  {
+    n: "03",
     icon: LayoutDashboard,
     title: "GymSyn — Smart Gym Management System",
     tagline: "All-in-one gym management for owners, coaches, staff, and members.",
@@ -121,7 +142,7 @@ const PROJECTS = [
     goal: "Simplify gym administration and automate operational workflows end-to-end.",
   },
   {
-    n: "03",
+    n: "04",
     icon: Ticket,
     title: "EmpireOne Ticketing System",
     tagline: "Internal service desk that streamlines cross-department issue resolution.",
@@ -137,7 +158,7 @@ const PROJECTS = [
     goal: "Centralize internal requests and reduce response times across HR, TA, Accounting, IT, and Operations.",
   },
   {
-    n: "04",
+    n: "05",
     icon: Boxes,
     title: "EmpireOne Unified System (ERP)",
     tagline: "Enterprise platform unifying HR, TA, Accounting, Payroll, and Inventory.",
