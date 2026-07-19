@@ -106,6 +106,14 @@ const PROJECTS = [
     title: "Barangay Management Information System (BMIS)",
     tagline: "Digitizing barangay operations with a centralized management platform.",
     url: "https://scc-digitized-barangay.online/",
+const PROJECTS = [
+  {
+    n: "01",
+    icon: Building2,
+    image: projBmis,
+    title: "Barangay Management Information System (BMIS)",
+    tagline: "Digitizing barangay operations with a centralized management platform.",
+    url: "https://scc-digitized-barangay.online/",
     features: [
       "Barangay Clearance Management",
       "Resident Profiling & Records",
@@ -120,6 +128,7 @@ const PROJECTS = [
   {
     n: "02",
     icon: Home,
+    image: projAsura,
     title: "AsuraTech Roofing — Corporate Website",
     tagline: "Modern corporate website for a roofing company to showcase services and generate leads.",
     url: "https://asuratech-roofing.vercel.app/",
@@ -138,6 +147,7 @@ const PROJECTS = [
   {
     n: "03",
     icon: LayoutDashboard,
+    image: projGym,
     title: "GymSyn — Smart Gym Management System",
     tagline: "All-in-one gym management for owners, coaches, staff, and members.",
     features: [
@@ -154,6 +164,7 @@ const PROJECTS = [
   {
     n: "04",
     icon: Ticket,
+    image: projTicket,
     title: "EmpireOne Ticketing System",
     tagline: "Internal service desk that streamlines cross-department issue resolution.",
     features: [
@@ -170,6 +181,7 @@ const PROJECTS = [
   {
     n: "05",
     icon: Boxes,
+    image: projErp,
     title: "EmpireOne Unified System (ERP)",
     tagline: "Enterprise platform unifying HR, TA, Accounting, Payroll, and Inventory.",
     features: [
