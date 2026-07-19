@@ -288,28 +288,29 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right — big hero image */}
+        {/* Right — big hero image (full, laptop visible) */}
         <div className="relative order-1 lg:order-2">
-          <div className="relative mx-auto aspect-square w-full max-w-[560px]">
-            {/* Circular purple gradient backdrop */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent-glow to-primary/40 blur-2xl opacity-70" />
-            <div className="absolute inset-6 rounded-full bg-gradient-to-br from-primary to-accent-glow" />
+          <div className="relative mx-auto w-full max-w-[640px]">
+            {/* Purple glow backdrop */}
+            <div className="pointer-events-none absolute inset-0 -z-10">
+              <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-primary/50 via-accent-glow/40 to-primary/20 blur-3xl" />
+            </div>
             {/* Dots pattern */}
             <div
-              className="absolute -right-2 top-4 h-24 w-24 opacity-60"
+              className="pointer-events-none absolute -right-2 top-4 h-24 w-24 opacity-60"
               style={{
                 backgroundImage: "radial-gradient(circle, oklch(0.7 0.18 285) 1.5px, transparent 1.5px)",
                 backgroundSize: "12px 12px",
               }}
             />
-            {/* Image */}
+            {/* Full uncropped image */}
             <img
               src={heroAsset.url}
               alt="Wacky — Full Stack Web Developer"
-              className="relative z-10 h-full w-full rounded-full object-cover shadow-2xl ring-1 ring-primary/30"
+              className="relative z-10 h-auto w-full object-contain drop-shadow-2xl"
             />
             {/* Floating code card */}
-            <div className="absolute -bottom-4 -left-6 z-20 hidden max-w-[260px] rounded-xl border border-border bg-card/90 p-4 font-mono text-xs shadow-2xl backdrop-blur md:block">
+            <div className="absolute -bottom-2 -left-4 z-20 hidden max-w-[260px] rounded-xl border border-border bg-card/90 p-4 font-mono text-xs shadow-2xl backdrop-blur md:block">
               <div className="mb-2 flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-destructive/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-chart-4" />
@@ -327,6 +328,8 @@ function Hero() {
               </pre>
             </div>
           </div>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -466,36 +469,55 @@ function Projects() {
     <section id="projects" className="mx-auto max-w-7xl px-6 py-20">
       <SectionHeading eyebrow="Featured Projects" title="Some of My Recent Work" />
       <div className="grid gap-6 lg:grid-cols-2">
-        {PROJECTS.map((p) => (
-          <article
-            key={p.n}
-            className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 p-7 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow"
-          >
-            <div className="absolute right-6 top-6 text-4xl font-black text-muted/40">{p.n}</div>
-            <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent-glow text-primary-foreground shadow-glow">
-              <p.icon className="h-6 w-6" />
-            </div>
-            <h3 className="mt-5 text-xl font-bold leading-tight">{p.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{p.tagline}</p>
-            <div className="mt-5">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">Key Features</p>
-              <div className="flex flex-wrap gap-2">
-                {p.features.map((f) => (
-                  <span
-                    key={f}
-                    className="rounded-full border border-border bg-background/40 px-3 py-1 text-xs text-muted-foreground"
-                  >
-                    {f}
-                  </span>
-                ))}
+        {PROJECTS.map((p) => {
+          const Tag: "a" | "article" = p.url ? "a" : "article";
+          const linkProps = p.url
+            ? { href: p.url, target: "_blank", rel: "noopener noreferrer" }
+            : {};
+          return (
+            <Tag
+              key={p.n}
+              {...linkProps}
+              className="group relative block overflow-hidden rounded-2xl border border-border bg-card/40 p-7 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow"
+            >
+              <div className="absolute right-6 top-6 text-4xl font-black text-muted/40">{p.n}</div>
+              <div className="flex items-center gap-3">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent-glow text-primary-foreground shadow-glow">
+                  <p.icon className="h-6 w-6" />
+                </div>
               </div>
-            </div>
-            <div className="mt-5 border-t border-border/60 pt-4">
-              <p className="text-xs font-semibold uppercase tracking-wider text-primary">Project Goal</p>
-              <p className="mt-1.5 text-sm text-muted-foreground">{p.goal}</p>
-            </div>
-          </article>
-        ))}
+              <h3 className="mt-5 flex items-start gap-2 text-xl font-bold leading-tight">
+                <span>{p.title}</span>
+                {p.url && (
+                  <ExternalLink className="mt-1 h-4 w-4 shrink-0 text-primary opacity-70 transition-opacity group-hover:opacity-100" />
+                )}
+              </h3>
+              <p className="mt-2 text-sm text-muted-foreground">{p.tagline}</p>
+              <div className="mt-5">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">Key Features</p>
+                <div className="flex flex-wrap gap-2">
+                  {p.features.map((f) => (
+                    <span
+                      key={f}
+                      className="rounded-full border border-border bg-background/40 px-3 py-1 text-xs text-muted-foreground"
+                    >
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-5 border-t border-border/60 pt-4">
+                <p className="text-xs font-semibold uppercase tracking-wider text-primary">Project Goal</p>
+                <p className="mt-1.5 text-sm text-muted-foreground">{p.goal}</p>
+                {p.url && (
+                  <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
+                    Visit live site <ArrowRight className="h-3.5 w-3.5" />
+                  </p>
+                )}
+              </div>
+            </Tag>
+          );
+        })}
       </div>
     </section>
   );
