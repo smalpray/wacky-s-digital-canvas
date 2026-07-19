@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import heroAsset from "@/assets/wacky-hero-2.png.asset.json";
+import logoAsset from "@/assets/web-logo.png.asset.json";
 import projBmis from "@/assets/project-bmis.jpg";
 import projAsura from "@/assets/project-asuratech.jpg";
 import projGym from "@/assets/project-gymsyn.jpg";
@@ -219,8 +220,9 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <a href="#home" className="text-lg font-bold tracking-tight">
-          <span className="text-primary">&lt;/&gt;</span> Wacky
+        <a href="#home" className="flex items-center gap-2 text-lg font-bold tracking-tight">
+          <img src={logoAsset.url} alt="Wacky logo" className="h-9 w-9 object-contain drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]" />
+          <span>Wacky</span>
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (
