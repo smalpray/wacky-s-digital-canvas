@@ -330,8 +330,6 @@ function Hero() {
           </div>
         </div>
       </div>
-        </div>
-      </div>
 
       {/* Stats bar */}
       <div className="mx-auto max-w-7xl px-6 pb-16">
