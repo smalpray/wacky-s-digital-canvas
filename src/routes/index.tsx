@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import heroAsset from "@/assets/wacky-hero-2.png.asset.json";
+import projBmis from "@/assets/project-bmis.jpg";
+import projAsura from "@/assets/project-asuratech.jpg";
+import projGym from "@/assets/project-gymsyn.jpg";
+import projTicket from "@/assets/project-ticketing.jpg";
+import projErp from "@/assets/project-erp.jpg";
 import {
   Code2,
   Database,
@@ -20,6 +26,8 @@ import {
   Briefcase,
   ExternalLink,
   Home,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -60,14 +68,16 @@ const STATS = [
 ];
 
 const SKILLS = [
-  { name: "React.js", level: 95, group: "Frontend" },
-  { name: "Next.js", level: 90, group: "Frontend" },
-  { name: "JavaScript", level: 95, group: "Frontend" },
-  { name: "Tailwind CSS", level: 92, group: "Frontend" },
-  { name: "PHP", level: 90, group: "Backend" },
-  { name: "Laravel", level: 88, group: "Backend" },
-  { name: "MySQL", level: 90, group: "Database" },
-  { name: "REST APIs", level: 92, group: "Backend" },
+  { name: "HTML", level: 95, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+  { name: "CSS", level: 90, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+  { name: "JavaScript", level: 92, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "React.js", level: 90, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "Next.js", level: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", invert: true },
+  { name: "Tailwind CSS", level: 92, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+  { name: "PHP", level: 90, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+  { name: "Laravel", level: 88, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
+  { name: "MySQL", level: 90, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+  { name: "Git", level: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
 ];
 
 const TECH_STACK = [
@@ -93,6 +103,7 @@ const PROJECTS = [
   {
     n: "01",
     icon: Building2,
+    image: projBmis,
     title: "Barangay Management Information System (BMIS)",
     tagline: "Digitizing barangay operations with a centralized management platform.",
     url: "https://scc-digitized-barangay.online/",
@@ -110,6 +121,7 @@ const PROJECTS = [
   {
     n: "02",
     icon: Home,
+    image: projAsura,
     title: "AsuraTech Roofing — Corporate Website",
     tagline: "Modern corporate website for a roofing company to showcase services and generate leads.",
     url: "https://asuratech-roofing.vercel.app/",
@@ -128,6 +140,7 @@ const PROJECTS = [
   {
     n: "03",
     icon: LayoutDashboard,
+    image: projGym,
     title: "GymSyn — Smart Gym Management System",
     tagline: "All-in-one gym management for owners, coaches, staff, and members.",
     features: [
@@ -144,6 +157,7 @@ const PROJECTS = [
   {
     n: "04",
     icon: Ticket,
+    image: projTicket,
     title: "EmpireOne Ticketing System",
     tagline: "Internal service desk that streamlines cross-department issue resolution.",
     features: [
@@ -160,6 +174,7 @@ const PROJECTS = [
   {
     n: "05",
     icon: Boxes,
+    image: projErp,
     title: "EmpireOne Unified System (ERP)",
     tagline: "Enterprise platform unifying HR, TA, Accounting, Payroll, and Inventory.",
     features: [
@@ -407,24 +422,33 @@ function Skills() {
   return (
     <section id="skills" className="mx-auto max-w-7xl px-6 py-20">
       <SectionHeading eyebrow="My Skills" title="Technologies I Master" />
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {SKILLS.map((s) => (
           <div
             key={s.name}
             className="rounded-xl border border-border bg-card/40 p-5 backdrop-blur transition-colors hover:border-primary/40"
           >
-            <div className="flex items-center justify-between">
-              <div className="min-w-0">
-                <p className="truncate font-semibold">{s.name}</p>
-                <p className="text-xs text-muted-foreground">{s.group}</p>
+            <div className="flex items-center gap-3">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-background/60">
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  className={`h-6 w-6 object-contain ${s.invert ? "invert" : ""}`}
+                  loading="lazy"
+                />
               </div>
-              <span className="text-sm font-bold text-primary">{s.level}%</span>
-            </div>
-            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-primary to-accent-glow"
-                style={{ width: `${s.level}%` }}
-              />
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between">
+                  <p className="truncate font-semibold">{s.name}</p>
+                  <span className="text-sm font-bold text-primary">{s.level}%</span>
+                </div>
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-primary to-accent-glow"
+                    style={{ width: `${s.level}%` }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -463,59 +487,119 @@ function TechCarousel() {
 }
 
 function Projects() {
+  const [idx, setIdx] = useState(0);
+  const total = PROJECTS.length;
+  const go = (d: number) => setIdx((i) => (i + d + total) % total);
+
   return (
     <section id="projects" className="mx-auto max-w-7xl px-6 py-20">
       <SectionHeading eyebrow="Featured Projects" title="Some of My Recent Work" />
-      <div className="grid gap-6 lg:grid-cols-2">
-        {PROJECTS.map((p) => {
-          const Tag: "a" | "article" = p.url ? "a" : "article";
-          const linkProps = p.url
-            ? { href: p.url, target: "_blank", rel: "noopener noreferrer" }
-            : {};
-          return (
-            <Tag
-              key={p.n}
-              {...linkProps}
-              className="group relative block overflow-hidden rounded-2xl border border-border bg-card/40 p-7 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow"
-            >
-              <div className="absolute right-6 top-6 text-4xl font-black text-muted/40">{p.n}</div>
-              <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent-glow text-primary-foreground shadow-glow">
-                  <p.icon className="h-6 w-6" />
+
+      <div className="relative">
+        <div className="overflow-hidden rounded-3xl">
+          <div
+            className="flex transition-transform duration-500 ease-out"
+            style={{ transform: `translateX(-${idx * 100}%)` }}
+          >
+            {PROJECTS.map((p) => {
+              const Tag: "a" | "article" = p.url ? "a" : "article";
+              const linkProps = p.url
+                ? { href: p.url, target: "_blank", rel: "noopener noreferrer" }
+                : {};
+              return (
+                <div key={p.n} className="w-full shrink-0 px-1">
+                  <Tag
+                    {...linkProps}
+                    className="group grid gap-0 overflow-hidden rounded-3xl border border-border bg-card/40 backdrop-blur transition-all hover:border-primary/50 hover:shadow-glow lg:grid-cols-2"
+                  >
+                    <div className="relative overflow-hidden bg-background/40">
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        width={1280}
+                        height={800}
+                        loading="lazy"
+                        className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105 lg:h-full"
+                      />
+                      <div className="absolute right-4 top-4 rounded-full bg-background/70 px-3 py-1 text-xs font-bold text-primary backdrop-blur">
+                        {p.n}
+                      </div>
+                    </div>
+                    <div className="p-7">
+                      <div className="flex items-center gap-3">
+                        <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-primary to-accent-glow text-primary-foreground shadow-glow">
+                          <p.icon className="h-5 w-5" />
+                        </div>
+                        <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                          Project {p.n}
+                        </p>
+                      </div>
+                      <h3 className="mt-4 flex items-start gap-2 text-xl font-bold leading-tight sm:text-2xl">
+                        <span>{p.title}</span>
+                        {p.url && (
+                          <ExternalLink className="mt-1 h-4 w-4 shrink-0 text-primary opacity-70 transition-opacity group-hover:opacity-100" />
+                        )}
+                      </h3>
+                      <p className="mt-2 text-sm text-muted-foreground">{p.tagline}</p>
+                      <div className="mt-4">
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">Key Features</p>
+                        <div className="flex flex-wrap gap-2">
+                          {p.features.map((f) => (
+                            <span
+                              key={f}
+                              className="rounded-full border border-border bg-background/40 px-3 py-1 text-xs text-muted-foreground"
+                            >
+                              {f}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="mt-4 border-t border-border/60 pt-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-primary">Project Goal</p>
+                        <p className="mt-1.5 text-sm text-muted-foreground">{p.goal}</p>
+                        {p.url && (
+                          <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
+                            Visit live site <ArrowRight className="h-3.5 w-3.5" />
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </Tag>
                 </div>
-              </div>
-              <h3 className="mt-5 flex items-start gap-2 text-xl font-bold leading-tight">
-                <span>{p.title}</span>
-                {p.url && (
-                  <ExternalLink className="mt-1 h-4 w-4 shrink-0 text-primary opacity-70 transition-opacity group-hover:opacity-100" />
-                )}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">{p.tagline}</p>
-              <div className="mt-5">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">Key Features</p>
-                <div className="flex flex-wrap gap-2">
-                  {p.features.map((f) => (
-                    <span
-                      key={f}
-                      className="rounded-full border border-border bg-background/40 px-3 py-1 text-xs text-muted-foreground"
-                    >
-                      {f}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="mt-5 border-t border-border/60 pt-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary">Project Goal</p>
-                <p className="mt-1.5 text-sm text-muted-foreground">{p.goal}</p>
-                {p.url && (
-                  <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
-                    Visit live site <ArrowRight className="h-3.5 w-3.5" />
-                  </p>
-                )}
-              </div>
-            </Tag>
-          );
-        })}
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Controls */}
+        <button
+          onClick={() => go(-1)}
+          aria-label="Previous project"
+          className="absolute left-2 top-1/2 z-10 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-colors hover:border-primary/50 hover:text-primary md:-left-5"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={() => go(1)}
+          aria-label="Next project"
+          className="absolute right-2 top-1/2 z-10 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-colors hover:border-primary/50 hover:text-primary md:-right-5"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
+
+      {/* Dots */}
+      <div className="mt-6 flex items-center justify-center gap-2">
+        {PROJECTS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIdx(i)}
+            aria-label={`Go to project ${i + 1}`}
+            className={`h-2 rounded-full transition-all ${
+              i === idx ? "w-8 bg-primary" : "w-2 bg-muted hover:bg-muted-foreground/50"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
