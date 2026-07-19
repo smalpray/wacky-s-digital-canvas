@@ -142,7 +142,7 @@ const PROJECTS = [
     n: "03",
     icon: LayoutDashboard,
     image: projGym,
-    title: "GymSyn — Smart Gym Management System",
+    title: "GymSync — Smart Gym Management System",
     tagline: "All-in-one gym management for owners, coaches, staff, and members.",
     features: [
       "Member Registration & Management",
