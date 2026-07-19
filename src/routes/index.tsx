@@ -99,14 +99,6 @@ const TECH_STACK = [
   { name: "npm", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" },
 ];
 
-const PROJECTS = [
-  {
-    n: "01",
-    icon: Building2,
-    title: "Barangay Management Information System (BMIS)",
-    tagline: "Digitizing barangay operations with a centralized management platform.",
-    url: "https://scc-digitized-barangay.online/",
-const PROJECTS = [
   {
     n: "01",
     icon: Building2,
