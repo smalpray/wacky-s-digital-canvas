@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import heroAsset from "@/assets/wacky-hero-2.png.asset.json";
+import projBmis from "@/assets/project-bmis.jpg";
+import projAsura from "@/assets/project-asuratech.jpg";
+import projGym from "@/assets/project-gymsyn.jpg";
+import projTicket from "@/assets/project-ticketing.jpg";
+import projErp from "@/assets/project-erp.jpg";
 import {
   Code2,
   Database,
@@ -20,6 +26,8 @@ import {
   Briefcase,
   ExternalLink,
   Home,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
