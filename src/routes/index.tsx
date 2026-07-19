@@ -99,6 +99,7 @@ const TECH_STACK = [
   { name: "npm", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" },
 ];
 
+const PROJECTS = [
   {
     n: "01",
     icon: Building2,
