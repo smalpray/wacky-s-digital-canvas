@@ -422,24 +422,33 @@ function Skills() {
   return (
     <section id="skills" className="mx-auto max-w-7xl px-6 py-20">
       <SectionHeading eyebrow="My Skills" title="Technologies I Master" />
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {SKILLS.map((s) => (
           <div
             key={s.name}
             className="rounded-xl border border-border bg-card/40 p-5 backdrop-blur transition-colors hover:border-primary/40"
           >
-            <div className="flex items-center justify-between">
-              <div className="min-w-0">
-                <p className="truncate font-semibold">{s.name}</p>
-                <p className="text-xs text-muted-foreground">{s.group}</p>
+            <div className="flex items-center gap-3">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-background/60">
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  className={`h-6 w-6 object-contain ${s.invert ? "invert" : ""}`}
+                  loading="lazy"
+                />
               </div>
-              <span className="text-sm font-bold text-primary">{s.level}%</span>
-            </div>
-            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-primary to-accent-glow"
-                style={{ width: `${s.level}%` }}
-              />
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between">
+                  <p className="truncate font-semibold">{s.name}</p>
+                  <span className="text-sm font-bold text-primary">{s.level}%</span>
+                </div>
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-primary to-accent-glow"
+                    style={{ width: `${s.level}%` }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         ))}
