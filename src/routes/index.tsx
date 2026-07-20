@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import heroAsset from "@/assets/wacky-hero-2.png.asset.json";
 import logoAsset from "@/assets/web-logo.png.asset.json";
 
 // Asset Image Imports
+import heroLogoImage from "@/assets/wacky-logo.png";
 import projBmisImage from "@/assets/bmis-image.png";
 import projRoofLogo from "@/assets/roof-logo.png";
 import projGym from "@/assets/project-gymsyn.jpg";
@@ -224,7 +224,9 @@ function Header() {
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <a href="#home" className="flex items-center gap-2 text-lg font-bold tracking-tight">
-          <img src={logoAsset.url} alt="Wakin logo" className="h-9 w-9 object-contain drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]" />
+          <div className="grid h-9 w-9 place-items-center rounded-xl bg-primary/15 font-mono text-sm font-black text-primary shadow-[0_0_12px_rgba(139,92,246,0.5)] border border-primary/30">
+            {"</>"}
+          </div>
           <span>wakin_dev</span>
         </a>
         <nav className="hidden items-center gap-8 md:flex">
@@ -308,7 +310,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right — big hero image */}
+        {/* Right — Hero image updated with wacky-logo.png */}
         <div className="relative order-1 lg:order-2">
           <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[640px]">
             {/* Purple glow backdrop */}
@@ -323,9 +325,9 @@ function Hero() {
                 backgroundSize: "12px 12px",
               }}
             />
-            {/* Full uncropped image */}
+            {/* Using wacky-logo.png image */}
             <img
-              src={heroAsset.url}
+              src={heroLogoImage}
               alt="Wakin — Full Stack Web Developer"
               className="relative z-10 h-auto w-full object-contain drop-shadow-2xl"
             />
