@@ -672,7 +672,7 @@ function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 text-sm text-muted-foreground sm:flex-row">
         <p>© 2026 Wakin. All rights reserved.</p>
         <p>
-          Built with <span className="text-primary">♥</span> by Wakin
+          Built with <span className="text-primary font-mono">{"</>"}</span> by Wakin
         </p>
       </div>
     </footer>
