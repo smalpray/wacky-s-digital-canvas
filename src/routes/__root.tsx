@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Wakin — Full Stack Web Developer Portfolio" },
+      { name: "description", content: "Wakin is a Full Stack Web Developer with 3+ years of experience building scalable enterprise web apps, HRIS, ERP, and management information systems." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Wakin — Full Stack Web Developer Portfolio" },
+      { property: "og:description", content: "Wakin is a Full Stack Web Developer with 3+ years of experience building scalable enterprise web apps, HRIS, ERP, and management information systems." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Wakin — Full Stack Web Developer Portfolio" },
+      { name: "twitter:description", content: "Wakin is a Full Stack Web Developer with 3+ years of experience building scalable enterprise web apps, HRIS, ERP, and management information systems." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b0fa55f8-48b9-4a55-988a-66a272eadf7a/id-preview-11532953--7962f992-1070-4fa2-bb2b-3afc51cb5ce1.lovable.app-1784573851522.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b0fa55f8-48b9-4a55-988a-66a272eadf7a/id-preview-11532953--7962f992-1070-4fa2-bb2b-3afc51cb5ce1.lovable.app-1784573851522.png" },
     ],
     links: [
       {

@@ -42,11 +42,11 @@ export const Route = createFileRoute("/")({
         content:
           "Wakin is a Full Stack Web Developer with 3+ years of experience building scalable enterprise web apps, HRIS, ERP, and management information systems.",
       },
-      { property: "og:title", content: "Wakin — Full Stack Web Developer" },
+      { property: "og:title", content: "Wakin — Full Stack Web Developer Portfolio" },
       {
         property: "og:description",
         content:
-          "Portfolio of Wakin — Full Stack Developer specializing in React, Next.js, Laravel, and enterprise web systems.",
+          "Wakin is a Full Stack Web Developer with 3+ years of experience building scalable enterprise web apps, HRIS, ERP, and management information systems.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
