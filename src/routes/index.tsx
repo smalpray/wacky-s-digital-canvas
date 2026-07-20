@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import logoAsset from "@/assets/web-logo.png.asset.json";
+import { useState, useRef, useEffect } from "react";
 
 // Asset Image Imports
 import heroLogoImage from "@/assets/wacky-logo.png";
@@ -262,14 +261,14 @@ function Hero() {
 
       {/* Main Grid Content - Expanding to max screen width */}
       <div className="mx-auto grid w-full max-w-[92vw] flex-1 grid-cols-1 items-center gap-8 px-4 py-8 sm:px-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:py-12">
-        
+
         {/* Left Side: Typography & Actions */}
         <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">
             <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
             I'm a Full Stack Developer
           </span>
-          
+
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
             Hi, I'm <span className="bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">Wakin</span>
             <br />
@@ -456,33 +455,65 @@ function About() {
 }
 
 function Skills() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="skills" className="mx-auto max-w-7xl px-6 py-20">
+    <section id="skills" className="mx-auto max-w-7xl px-6 py-24">
       <SectionHeading eyebrow="My Skills" title="Technologies I Master" />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {SKILLS.map((s) => (
+      <div ref={sectionRef} className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {SKILLS.map((s, i) => (
           <div
             key={s.name}
-            className="rounded-xl border border-border bg-card/40 p-5 backdrop-blur transition-colors hover:border-primary/40"
+            className="group rounded-xl border border-border/60 bg-card/30 p-5 shadow-sm backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
+            style={{
+              transitionDelay: inView ? `${i * 60}ms` : "0ms",
+              opacity: inView ? 1 : 0,
+              transform: inView ? "translateY(0)" : "translateY(16px)",
+            }}
           >
             <div className="flex items-center gap-3">
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-background/60">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-background/60 ring-1 ring-border/50 transition-transform duration-300 group-hover:scale-105">
                 <img
                   src={s.logo}
                   alt={s.name}
-                  className={h-6 w-6 object-contain ${s.invert ? "invert" : ""}}
+                  className={`h-6 w-6 object-contain ${s.invert ? "invert" : ""}`}
                   loading="lazy"
                 />
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between">
-                  <p className="truncate font-semibold">{s.name}</p>
-                  <span className="text-sm font-bold text-primary">{s.level}%</span>
+                  <p className="truncate text-sm font-semibold tracking-tight">{s.name}</p>
+                  <span className="font-mono text-xs font-bold text-primary">
+                    {s.level}%
+                  </span>
                 </div>
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted">
+                <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-muted">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-primary to-accent-glow"
-                    style={{ width: ${s.level}% }}
+                    className="h-full rounded-full bg-gradient-to-r from-primary to-accent-glow transition-all ease-out"
+                    style={{
+                      width: inView ? `${s.level}%` : "0%",
+                      transitionDuration: "1000ms",
+                      transitionDelay: inView ? `${i * 60 + 150}ms` : "0ms",
+                    }}
                   />
                 </div>
               </div>
@@ -497,23 +528,37 @@ function Skills() {
 function TechCarousel() {
   const items = [...TECH_STACK, ...TECH_STACK];
   return (
-    <section className="border-y border-border/60 bg-card/20 py-12">
-      <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-        My Tech Stack
-      </p>
+    <section className="relative border-y border-border/60 bg-card/20 py-14">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/[0.03] to-transparent" />
+
+      <div className="relative mb-8 flex items-center justify-center gap-4">
+        <div className="h-px w-10 bg-border" />
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+          My Tech Stack
+        </p>
+        <div className="h-px w-10 bg-border" />
+      </div>
+
       <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="flex w-max animate-marquee gap-14 pr-14 group-hover:[animation-play-state:paused]">
+        <div className="flex w-max animate-marquee gap-3 pr-3 group-hover:[animation-play-state:paused]">
           {items.map((t, i) => (
-            <div key={${t.name}-${i}} className="flex w-24 shrink-0 flex-col items-center gap-2">
-              <img
-                src={t.logo}
-                alt={t.name}
-                className={h-14 w-14 object-contain opacity-80 transition-all hover:scale-110 hover:opacity-100 ${
-                  t.invert ? "invert" : ""
-                }}
-                loading="lazy"
-              />
-              <span className="text-xs text-muted-foreground">{t.name}</span>
+            <div
+              key={`${t.name}-${i}`}
+              className="group/item flex w-28 shrink-0 flex-col items-center gap-2.5 rounded-xl px-3 py-4 transition-colors duration-300 hover:bg-primary/5"
+            >
+              <div className="grid h-14 w-14 place-items-center rounded-xl transition-all duration-300 group-hover/item:-translate-y-1">
+                <img
+                  src={t.logo}
+                  alt={t.name}
+                  className={`h-10 w-10 object-contain grayscale transition-all duration-300 group-hover/item:scale-110 group-hover/item:grayscale-0 ${
+                    t.invert ? "invert group-hover/item:invert-0" : ""
+                  }`}
+                  loading="lazy"
+                />
+              </div>
+              <span className="text-xs text-muted-foreground opacity-70 transition-opacity duration-300 group-hover/item:text-primary group-hover/item:opacity-100">
+                {t.name}
+              </span>
             </div>
           ))}
         </div>
@@ -584,7 +629,7 @@ function Projects() {
                     <div className="flex flex-col p-8">
                       <div className="flex items-center gap-3">
                         <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20">
-                          <p.icon className="h-4.5 w-4.5" />
+                          <p.icon className="h-4 w-4" />
                         </div>
                         <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
                           Project {p.n} of {total}
