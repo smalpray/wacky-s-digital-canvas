@@ -2,13 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import heroAsset from "@/assets/wacky-hero-2.png.asset.json";
 import logoAsset from "@/assets/web-logo.png.asset.json";
-import projBmisAsset from "@/assets/project-bmis.png.asset.json";
-import projAsuraAsset from "@/assets/project-asuratech.png.asset.json";
-const projBmis = projBmisAsset.url;
-const projAsura = projAsuraAsset.url;
+
+// Asset Image Imports
+import projBmisImage from "@/assets/bmis-image.png";
+import projRoofLogo from "@/assets/roof-logo.png";
 import projGym from "@/assets/project-gymsyn.jpg";
 import projTicket from "@/assets/project-ticketing.jpg";
 import projErp from "@/assets/project-erp.jpg";
+
 import {
   Code2,
   Database,
@@ -106,7 +107,7 @@ const PROJECTS = [
   {
     n: "01",
     icon: Building2,
-    image: bmis-image.png,
+    image: projBmisImage,
     title: "Barangay Management Information System (BMIS)",
     tagline: "Digitizing barangay operations with a centralized management platform.",
     url: "https://scc-digitized-barangay.online/",
@@ -124,7 +125,7 @@ const PROJECTS = [
   {
     n: "02",
     icon: Home,
-    image: projAsura,
+    image: projRoofLogo,
     title: "AsuraTech Roofing — Corporate Website",
     tagline: "Modern corporate website for a roofing company to showcase services and generate leads.",
     url: "https://asuratech-roofing.vercel.app/",
@@ -307,7 +308,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right — big hero image (full, laptop visible) */}
+        {/* Right — big hero image */}
         <div className="relative order-1 lg:order-2">
           <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[640px]">
             {/* Purple glow backdrop */}
@@ -369,7 +370,6 @@ function Hero() {
     </section>
   );
 }
-
 
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
@@ -463,7 +463,6 @@ function Skills() {
 }
 
 function TechCarousel() {
-  // Duplicate for seamless marquee
   const items = [...TECH_STACK, ...TECH_STACK];
   return (
     <section className="border-y border-border/60 bg-card/20 py-12">
