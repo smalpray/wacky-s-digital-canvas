@@ -36,17 +36,17 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Wacky — Full Stack Web Developer Portfolio" },
+      { title: "Wakin — Full Stack Web Developer Portfolio" },
       {
         name: "description",
         content:
-          "Wacky is a Full Stack Web Developer with 3+ years of experience building scalable enterprise web apps, HRIS, ERP, and management information systems.",
+          "Wakin is a Full Stack Web Developer with 3+ years of experience building scalable enterprise web apps, HRIS, ERP, and management information systems.",
       },
-      { property: "og:title", content: "Wacky — Full Stack Web Developer" },
+      { property: "og:title", content: "Wakin — Full Stack Web Developer" },
       {
         property: "og:description",
         content:
-          "Portfolio of Wacky — Full Stack Developer specializing in React, Next.js, Laravel, and enterprise web systems.",
+          "Portfolio of Wakin — Full Stack Developer specializing in React, Next.js, Laravel, and enterprise web systems.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -223,8 +223,8 @@ function Header() {
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <a href="#home" className="flex items-center gap-2 text-lg font-bold tracking-tight">
-          <img src={logoAsset.url} alt="Wacky logo" className="h-9 w-9 object-contain drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]" />
-          <span>Wacky</span>
+          <img src={logoAsset.url} alt="Wakin logo" className="h-9 w-9 object-contain drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]" />
+          <span>wakin_dev</span>
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (
@@ -265,7 +265,7 @@ function Hero() {
             I'm a Full Stack Developer
           </span>
           <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-            Hi, I'm <span className="bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">Wacky</span>
+            Hi, I'm <span className="bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">Wakin</span>
             <br />
             I build systems for the enterprise.
           </h1>
@@ -325,7 +325,7 @@ function Hero() {
             {/* Full uncropped image */}
             <img
               src={heroAsset.url}
-              alt="Wacky — Full Stack Web Developer"
+              alt="Wakin — Full Stack Web Developer"
               className="relative z-10 h-auto w-full object-contain drop-shadow-2xl"
             />
             {/* Floating code card */}
@@ -338,7 +338,7 @@ function Hero() {
               </div>
               <pre className="text-[11px] leading-relaxed text-muted-foreground">
 {`const dev = {
-  name: "Wacky",
+  name: "Wakin",
   role: "Full Stack",
   stack: ["React","Laravel"],
   passion: "Building
