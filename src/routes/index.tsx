@@ -250,56 +250,56 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden">
+    <section id="home" className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col">
       {/* Ambient glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" />
-        <div className="absolute right-0 top-40 h-[400px] w-[400px] rounded-full bg-accent-glow/20 blur-[120px]" />
+        <div className="absolute left-1/2 top-0 h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" />
+        <div className="absolute right-0 top-40 h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] rounded-full bg-accent-glow/20 blur-[120px]" />
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-24">
+      <div className="mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-8 px-5 py-10 sm:gap-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:py-20">
         {/* Left */}
-        <div className="order-2 lg:order-1">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary">
+        <div className="order-2 text-center lg:order-1 lg:text-left">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-primary sm:px-4 sm:text-xs">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
             I'm a Full Stack Developer
           </span>
-          <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight sm:mt-6 sm:text-5xl md:text-6xl lg:text-7xl">
             Hi, I'm <span className="bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">Wakin</span>
             <br />
             I build systems for the enterprise.
           </h1>
-          <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-sm text-muted-foreground sm:mt-6 sm:text-base lg:mx-0 lg:text-lg">
             A passionate Full Stack Web Developer with 3+ years of experience designing, developing, and maintaining
             scalable, secure, and user-centric web applications that streamline business operations.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-7 flex flex-wrap justify-center gap-3 sm:mt-8 sm:gap-4 lg:justify-start">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105 sm:px-6 sm:py-3"
             >
               View My Work <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:bg-card"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-5 py-2.5 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:bg-card sm:px-6 sm:py-3"
             >
               <Download className="h-4 w-4" /> Download CV
             </a>
           </div>
 
-          <div className="mt-10">
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <div className="mt-8 sm:mt-10">
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground sm:text-xs">
               Technologies I work with
             </p>
-            <div className="mt-4 flex flex-wrap items-center gap-5">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-5 lg:justify-start">
               {TECH_STACK.slice(0, 7).map((t) => (
                 <img
                   key={t.name}
                   src={t.logo}
                   alt={t.name}
-                  className={`h-8 w-8 opacity-90 transition-opacity hover:opacity-100 ${t.invert ? "invert" : ""}`}
+                  className={`h-7 w-7 opacity-90 transition-opacity hover:opacity-100 sm:h-8 sm:w-8 ${t.invert ? "invert" : ""}`}
                   loading="lazy"
                 />
               ))}
@@ -309,14 +309,14 @@ function Hero() {
 
         {/* Right — big hero image (full, laptop visible) */}
         <div className="relative order-1 lg:order-2">
-          <div className="relative mx-auto w-full max-w-[640px]">
+          <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[640px]">
             {/* Purple glow backdrop */}
             <div className="pointer-events-none absolute inset-0 -z-10">
-              <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-primary/50 via-accent-glow/40 to-primary/20 blur-3xl" />
+              <div className="absolute left-1/2 top-1/2 h-[360px] w-[360px] sm:h-[460px] sm:w-[460px] lg:h-[520px] lg:w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-primary/50 via-accent-glow/40 to-primary/20 blur-3xl" />
             </div>
             {/* Dots pattern */}
             <div
-              className="pointer-events-none absolute -right-2 top-4 h-24 w-24 opacity-60"
+              className="pointer-events-none absolute -right-2 top-4 h-16 w-16 opacity-60 sm:h-24 sm:w-24"
               style={{
                 backgroundImage: "radial-gradient(circle, oklch(0.7 0.18 285) 1.5px, transparent 1.5px)",
                 backgroundSize: "12px 12px",
@@ -351,16 +351,16 @@ function Hero() {
       </div>
 
       {/* Stats bar */}
-      <div className="mx-auto max-w-7xl px-6 pb-16">
-        <div className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-card/40 p-6 backdrop-blur md:grid-cols-4">
+      <div className="mx-auto w-full max-w-7xl px-5 pb-10 sm:px-6 sm:pb-16">
+        <div className="grid grid-cols-2 gap-3 rounded-2xl border border-border bg-card/40 p-4 backdrop-blur sm:gap-4 sm:p-6 md:grid-cols-4">
           {STATS.map((s) => (
-            <div key={s.label} className="flex items-center gap-4">
-              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary">
-                <s.icon className="h-5 w-5" />
+            <div key={s.label} className="flex items-center gap-3 sm:gap-4">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary sm:h-12 sm:w-12">
+                <s.icon className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
               <div className="min-w-0">
-                <div className="text-2xl font-bold">{s.value}</div>
-                <div className="truncate text-xs text-muted-foreground">{s.label}</div>
+                <div className="text-xl font-bold sm:text-2xl">{s.value}</div>
+                <div className="truncate text-[11px] text-muted-foreground sm:text-xs">{s.label}</div>
               </div>
             </div>
           ))}
@@ -369,6 +369,7 @@ function Hero() {
     </section>
   );
 }
+
 
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
