@@ -253,56 +253,60 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex flex-col">
-      {/* Ambient glow */}
+    <section id="home" className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden pt-16 lg:pt-20">
+      {/* Ambient glow backgrounds scaled to fill screen */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" />
-        <div className="absolute right-0 top-40 h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] rounded-full bg-accent-glow/20 blur-[120px]" />
+        <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/20 blur-[160px] sm:h-[800px] sm:w-[800px]" />
+        <div className="absolute right-0 top-1/4 h-[400px] w-[400px] rounded-full bg-accent-glow/20 blur-[160px] sm:h-[600px] sm:w-[600px]" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-8 px-5 py-10 sm:gap-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:py-20">
-        {/* Left */}
-        <div className="order-2 text-center lg:order-1 lg:text-left">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-primary sm:px-4 sm:text-xs">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+      {/* Main Grid Content - Expanding to max screen width */}
+      <div className="mx-auto grid w-full max-w-[92vw] flex-1 grid-cols-1 items-center gap-8 px-4 py-8 sm:px-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:py-12">
+        
+        {/* Left Side: Typography & Actions */}
+        <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
             I'm a Full Stack Developer
           </span>
-          <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight sm:mt-6 sm:text-5xl md:text-6xl lg:text-7xl">
+          
+          <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
             Hi, I'm <span className="bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">Wakin</span>
             <br />
             I build systems for the enterprise.
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-sm text-muted-foreground sm:mt-6 sm:text-base lg:mx-0 lg:text-lg">
+
+          <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg lg:text-xl">
             A passionate Full Stack Web Developer with 3+ years of experience designing, developing, and maintaining
             scalable, secure, and user-centric web applications that streamline business operations.
           </p>
 
-          <div className="mt-7 flex flex-wrap justify-center gap-3 sm:mt-8 sm:gap-4 lg:justify-start">
+          <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-5 lg:justify-start">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105 sm:px-6 sm:py-3"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
             >
-              View My Work <ArrowRight className="h-4 w-4" />
+              View My Work <ArrowRight className="h-5 w-5" />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-5 py-2.5 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:bg-card sm:px-6 sm:py-3"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-7 py-3.5 text-base font-semibold text-foreground backdrop-blur transition-colors hover:bg-card"
             >
-              <Download className="h-4 w-4" /> Download CV
+              <Download className="h-5 w-5" /> Download CV
             </a>
           </div>
 
-          <div className="mt-8 sm:mt-10">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground sm:text-xs">
+          <div className="mt-10 sm:mt-12">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               Technologies I work with
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-5 lg:justify-start">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-5 lg:justify-start">
               {TECH_STACK.slice(0, 7).map((t) => (
                 <img
                   key={t.name}
                   src={t.logo}
                   alt={t.name}
-                  className={`h-7 w-7 opacity-90 transition-opacity hover:opacity-100 sm:h-8 sm:w-8 ${t.invert ? "invert" : ""}`}
+                  className={`h-8 w-8 opacity-90 transition-all hover:scale-110 hover:opacity-100 sm:h-10 sm:w-10 ${t.invert ? "invert" : ""}`}
                   loading="lazy"
                 />
               ))}
@@ -310,29 +314,32 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right — Hero image updated with wacky-logo.png */}
-        <div className="relative order-1 lg:order-2">
-          <div className="relative mx-auto w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[640px]">
-            {/* Purple glow backdrop */}
-            <div className="pointer-events-none absolute inset-0 -z-10">
-              <div className="absolute left-1/2 top-1/2 h-[360px] w-[360px] sm:h-[460px] sm:w-[460px] lg:h-[520px] lg:w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-primary/50 via-accent-glow/40 to-primary/20 blur-3xl" />
+        {/* Right Side: Scaled Image Hero Asset */}
+        <div className="relative order-1 flex items-center justify-center lg:order-2">
+          <div className="relative flex w-full max-w-[500px] items-center justify-center sm:max-w-[650px] lg:max-w-[800px]">
+            {/* Enlarged backdrop glow */}
+            <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
+              <div className="h-[450px] w-[450px] rounded-full bg-gradient-to-br from-primary/50 via-accent-glow/40 to-primary/20 blur-3xl sm:h-[600px] sm:w-[600px] lg:h-[700px] lg:w-[700px]" />
             </div>
-            {/* Dots pattern */}
+
+            {/* Decorative dot grid */}
             <div
-              className="pointer-events-none absolute -right-2 top-4 h-16 w-16 opacity-60 sm:h-24 sm:w-24"
+              className="pointer-events-none absolute -right-4 top-2 h-24 w-24 opacity-60 sm:h-36 sm:w-36"
               style={{
-                backgroundImage: "radial-gradient(circle, oklch(0.7 0.18 285) 1.5px, transparent 1.5px)",
-                backgroundSize: "12px 12px",
+                backgroundImage: "radial-gradient(circle, oklch(0.7 0.18 285) 2px, transparent 2px)",
+                backgroundSize: "16px 16px",
               }}
             />
-            {/* Using wacky-logo.png image */}
+
+            {/* Maximized Hero Image */}
             <img
               src={heroLogoImage}
               alt="Wakin — Full Stack Web Developer"
-              className="relative z-10 h-auto w-full object-contain drop-shadow-2xl"
+              className="relative z-10 h-auto max-h-[65vh] w-full object-contain drop-shadow-2xl transition-transform hover:scale-[1.02]"
             />
-            {/* Floating code card */}
-            <div className="absolute -bottom-2 -left-4 z-20 hidden max-w-[260px] rounded-xl border border-border bg-card/90 p-4 font-mono text-xs shadow-2xl backdrop-blur md:block">
+
+            {/* Floating Code Snippet Card */}
+            <div className="absolute -bottom-4 -left-6 z-20 hidden max-w-[280px] rounded-xl border border-border bg-card/90 p-4 font-mono text-xs shadow-2xl backdrop-blur lg:block">
               <div className="mb-2 flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-destructive/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-chart-4" />
@@ -351,19 +358,20 @@ function Hero() {
             </div>
           </div>
         </div>
+
       </div>
 
-      {/* Stats bar */}
-      <div className="mx-auto w-full max-w-7xl px-5 pb-10 sm:px-6 sm:pb-16">
-        <div className="grid grid-cols-2 gap-3 rounded-2xl border border-border bg-card/40 p-4 backdrop-blur sm:gap-4 sm:p-6 md:grid-cols-4">
+      {/* Stats bar pinned nicely across full width at bottom */}
+      <div className="mx-auto w-full max-w-[92vw] px-4 pb-6 sm:px-8 sm:pb-8">
+        <div className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-card/40 p-5 backdrop-blur md:grid-cols-4 lg:p-6">
           {STATS.map((s) => (
-            <div key={s.label} className="flex items-center gap-3 sm:gap-4">
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary sm:h-12 sm:w-12">
-                <s.icon className="h-4 w-4 sm:h-5 sm:w-5" />
+            <div key={s.label} className="flex items-center gap-4">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary/15 text-primary sm:h-14 sm:w-14">
+                <s.icon className="h-5 w-5 sm:h-6 sm:w-6" />
               </div>
               <div className="min-w-0">
-                <div className="text-xl font-bold sm:text-2xl">{s.value}</div>
-                <div className="truncate text-[11px] text-muted-foreground sm:text-xs">{s.label}</div>
+                <div className="text-2xl font-bold sm:text-3xl">{s.value}</div>
+                <div className="truncate text-xs text-muted-foreground sm:text-sm">{s.label}</div>
               </div>
             </div>
           ))}
