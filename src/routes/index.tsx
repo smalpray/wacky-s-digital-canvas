@@ -224,7 +224,7 @@ function Header() {
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <a href="#home" className="flex items-center gap-2 text-lg font-bold tracking-tight">
-          <div className="grid h-9 w-9 place-items-center rounded-xl bg-primary/15 font-mono text-sm font-black text-primary shadow-[0_0_12px_rgba(139,92,246,0.5)] border border-primary/30">
+          <div className="grid h-9 w-9 place-items-center font-mono text-sm font-black text-primary shadow-[0_0_12px_rgba(139,92,246,0.5)] ">
             {"</>"}
           </div>
           <span>wakin_dev</span>
