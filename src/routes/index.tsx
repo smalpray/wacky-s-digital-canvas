@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import logoAsset from "@/assets/web-logo.png.asset.json";
 
 // Asset Image Imports
 import heroLogoImage from "@/assets/wacky-logo.png";
@@ -261,14 +262,14 @@ function Hero() {
 
       {/* Main Grid Content - Expanding to max screen width */}
       <div className="mx-auto grid w-full max-w-[92vw] flex-1 grid-cols-1 items-center gap-8 px-4 py-8 sm:px-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:py-12">
-
+        
         {/* Left Side: Typography & Actions */}
         <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">
             <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
             I'm a Full Stack Developer
           </span>
-
+          
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
             Hi, I'm <span className="bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">Wakin</span>
             <br />
@@ -629,7 +630,7 @@ function Projects() {
                     <div className="flex flex-col p-8">
                       <div className="flex items-center gap-3">
                         <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20">
-                          <p.icon className="h-4 w-4" />
+                          <p.icon className="h-4.5 w-4.5" />
                         </div>
                         <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
                           Project {p.n} of {total}
