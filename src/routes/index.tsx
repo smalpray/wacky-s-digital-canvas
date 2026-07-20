@@ -658,19 +658,32 @@ function Projects() {
 
 function Expertise() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
+    <section className="mx-auto max-w-7xl px-6 py-24">
       <SectionHeading eyebrow="Core Expertise" title="What I Specialize In" />
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {EXPERTISE.map((e) => (
+      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {EXPERTISE.map((e, i) => (
           <div
             key={e.title}
-            className="rounded-2xl border border-border bg-card/40 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/40"
+            className="group relative overflow-hidden rounded-2xl border border-border/60 bg-card/30 p-7 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
           >
-            <div className="grid h-11 w-11 place-items-center rounded-lg bg-primary/15 text-primary">
-              <e.icon className="h-5 w-5" />
+            {/* Ambient glow on hover */}
+            <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-primary/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+
+            <div className="flex items-start justify-between">
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15 transition-all duration-300 group-hover:bg-primary/15 group-hover:ring-primary/25">
+                <e.icon className="h-5 w-5" />
+              </div>
+              <span className="font-mono text-xs text-muted-foreground/50">
+                {String(i + 1).padStart(2, "0")}
+              </span>
             </div>
-            <h3 className="mt-4 font-semibold">{e.title}</h3>
-            <p className="mt-1.5 text-sm text-muted-foreground">{e.desc}</p>
+
+            <h3 className="mt-5 font-semibold tracking-tight">{e.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {e.desc}
+            </p>
+
+            <div className="mt-5 h-px w-8 bg-primary/30 transition-all duration-300 group-hover:w-12" />
           </div>
         ))}
       </div>
