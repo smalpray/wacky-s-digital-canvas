@@ -523,7 +523,7 @@ function Projects() {
                         width={1280}
                         height={800}
                         loading="lazy"
-                        className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105 lg:h-full"
+                        className="h-64 w-full object-contain p-4 transition-transform duration-500 group-hover:scale-105 lg:h-full"
                       />
                       <div className="absolute right-4 top-4 rounded-full bg-background/70 px-3 py-1 text-xs font-bold text-primary backdrop-blur">
                         {p.n}
