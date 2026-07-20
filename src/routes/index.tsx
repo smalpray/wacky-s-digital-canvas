@@ -393,40 +393,62 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
 
 function About() {
   return (
-    <section id="about" className="mx-auto max-w-7xl px-6 py-20">
+    <section id="about" className="mx-auto max-w-7xl px-6 py-24">
       <SectionHeading eyebrow="About Me" title="Building software that solves real problems" />
-      <div className="grid gap-8 lg:grid-cols-2">
-        <div className="rounded-2xl border border-border bg-card/40 p-8 backdrop-blur">
-          <h3 className="text-2xl font-bold">Development Philosophy</h3>
-          <p className="mt-4 text-muted-foreground">
-            I'm passionate about building high-quality software that solves real-world business challenges. Every
-            application I develop emphasizes clean architecture, maintainable code, security, scalability, and an
-            intuitive user experience.
+      <div className="mt-14 grid gap-5 lg:grid-cols-2">
+        <div className="rounded-2xl border border-border/60 bg-card/30 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-primary/30">
+          <div className="flex items-center gap-3">
+            <div className="h-px w-8 bg-primary/40" />
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/70">
+              Philosophy
+            </p>
+          </div>
+          <h3 className="mt-4 text-2xl font-semibold tracking-tight">Development Philosophy</h3>
+          <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+            I'm passionate about building high-quality software that solves real-world business
+            challenges. Every application I develop emphasizes clean architecture, maintainable
+            code, security, scalability, and an intuitive user experience.
           </p>
-          <p className="mt-4 text-muted-foreground">
-            My goal is to create digital solutions that not only meet business requirements but also improve
-            productivity, automate workflows, and deliver long-term value.
+          <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+            My goal is to create digital solutions that not only meet business requirements but
+            also improve productivity, automate workflows, and deliver long-term value.
           </p>
         </div>
-        <div className="rounded-2xl border border-border bg-gradient-to-br from-primary/10 via-card/40 to-accent-glow/10 p-8 backdrop-blur">
-          <h3 className="text-2xl font-bold">What I Do Best</h3>
-          <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {[
-              "Enterprise Web Apps",
-              "HRIS & ERP Solutions",
-              "MIS Platforms",
-              "Payroll Systems",
-              "Ticketing Systems",
-              "Inventory Systems",
-              "REST API Design",
-              "Database Optimization",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                {item}
-              </li>
-            ))}
-          </ul>
+
+        <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/30 p-8 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-primary/30">
+          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-accent-glow/10 blur-3xl" />
+
+          <div className="relative">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-8 bg-primary/40" />
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground/70">
+                Capabilities
+              </p>
+            </div>
+            <h3 className="mt-4 text-2xl font-semibold tracking-tight">What I Do Best</h3>
+
+            <ul className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              {[
+                "Enterprise Web Apps",
+                "HRIS & ERP Solutions",
+                "MIS Platforms",
+                "Payroll Systems",
+                "Ticketing Systems",
+                "Inventory Systems",
+                "REST API Design",
+                "Database Optimization",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="group flex items-center gap-2.5 rounded-lg border border-border/50 bg-background/30 px-3 py-2.5 text-sm text-foreground/80 transition-colors hover:border-primary/30 hover:bg-primary/5"
+                >
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary transition-transform group-hover:scale-125" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
