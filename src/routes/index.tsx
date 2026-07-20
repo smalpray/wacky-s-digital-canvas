@@ -670,9 +670,9 @@ function Footer() {
   return (
     <footer className="border-t border-border/60 py-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 text-sm text-muted-foreground sm:flex-row">
-        <p>© 2026 Wacky. All rights reserved.</p>
+        <p>© 2026 Wakin. All rights reserved.</p>
         <p>
-          Built with <span className="text-primary">♥</span> by Wacky
+          Built with <span className="text-primary">♥</span> by Wakin
         </p>
       </div>
     </footer>
