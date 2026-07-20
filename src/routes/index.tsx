@@ -106,7 +106,7 @@ const PROJECTS = [
   {
     n: "01",
     icon: Building2,
-    image: projBmis,
+    image: bmis-image.png,
     title: "Barangay Management Information System (BMIS)",
     tagline: "Digitizing barangay operations with a centralized management platform.",
     url: "https://scc-digitized-barangay.online/",
