@@ -644,7 +644,7 @@ function Contact() {
         </p>
         <div className="relative mt-8 flex flex-wrap justify-center gap-4">
           <a
-            href="mailto:hello@wacky.dev"
+            href="mailto:wackyhojilla13@gmail.com"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
           >
             <Mail className="h-4 w-4" /> Get in Touch
