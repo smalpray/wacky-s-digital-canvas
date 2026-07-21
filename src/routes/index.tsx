@@ -230,7 +230,7 @@ function Header() {
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (
-            
+            <a
               key={n.href}
               href={n.href}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -239,7 +239,7 @@ function Header() {
             </a>
           ))}
         </nav>
-        
+        <a
           href="#contact"
           className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-5 py-2 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:scale-105 md:inline-flex"
         >
@@ -278,13 +278,13 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-5 lg:justify-start">
-            
+            <a
               href="#projects"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
             >
               View My Work <ArrowRight className="h-5 w-5" />
             </a>
-            
+            <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-7 py-3.5 text-base font-semibold text-foreground backdrop-blur transition-colors hover:bg-card"
             >
@@ -828,7 +828,7 @@ function Contact() {
         </form>
 
         <div className="relative mt-8 flex flex-wrap justify-center gap-4">
-          
+          <a
             href="mailto:wackyhojilla13@gmail.com"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
           >
@@ -836,7 +836,7 @@ function Contact() {
           </a>
           <div className="flex items-center gap-3">
             {socials.map(({ Icon, href, label }, i) => (
-              
+              <a
                 key={i}
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
