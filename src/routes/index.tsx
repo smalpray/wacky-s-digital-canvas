@@ -759,6 +759,12 @@ function Expertise() {
 }
 
 function Contact() {
+  const socials = [
+    { Icon: Github, href: "https://github.com/", label: "GitHub" },
+    { Icon: Linkedin, href: "https://www.linkedin.com/in/wacky-hojilla-088761328/", label: "LinkedIn" },
+    { Icon: Mail, href: "mailto:wackyhojilla13@gmail.com", label: "Email" },
+  ];
+
   return (
     <section id="contact" className="mx-auto max-w-7xl px-6 py-20">
       <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/20 via-card/40 to-accent-glow/20 p-10 text-center backdrop-blur md:p-16">
@@ -770,17 +776,20 @@ function Contact() {
           I'm always open to discussing new projects and opportunities. Let's create something amazing together.
         </p>
         <div className="relative mt-8 flex flex-wrap justify-center gap-4">
-          <a
+          
             href="mailto:wackyhojilla13@gmail.com"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
           >
             <Mail className="h-4 w-4" /> Get in Touch
           </a>
           <div className="flex items-center gap-3">
-            {[Github, Linkedin, Mail].map((Icon, i) => (
-              <a
+            {socials.map(({ Icon, href, label }, i) => (
+              
                 key={i}
-                href="#"
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                aria-label={label}
                 className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card/60 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
               >
                 <Icon className="h-4 w-4" />
