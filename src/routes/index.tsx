@@ -31,6 +31,11 @@ import {
   Home,
   ChevronLeft,
   ChevronRight,
+  Phone,
+  Twitter,
+  Instagram,
+  Clock,
+  Send,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
