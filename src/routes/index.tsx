@@ -230,7 +230,7 @@ function Header() {
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (
-            
+            <a
               key={n.href}
               href={n.href}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -239,7 +239,7 @@ function Header() {
             </a>
           ))}
         </nav>
-        
+        <a
           href="#contact"
           className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-5 py-2 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:scale-105 md:inline-flex"
         >
