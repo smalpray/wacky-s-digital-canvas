@@ -31,6 +31,11 @@ import {
   Home,
   ChevronLeft,
   ChevronRight,
+  Phone,
+  Twitter,
+  Instagram,
+  Clock,
+  Send,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -747,13 +752,14 @@ function Expertise() {
 }
 
 function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sent">("idle");
 
   const socials = [
     { Icon: Github, href: "https://github.com/", label: "GitHub" },
     { Icon: Linkedin, href: "https://www.linkedin.com/in/wacky-hojilla-088761328/", label: "LinkedIn" },
-    { Icon: Mail, href: "mailto:wackyhojilla13@gmail.com", label: "Email" },
+    { Icon: Twitter, href: "https://twitter.com/", label: "Twitter" },
+    { Icon: Instagram, href: "https://instagram.com/", label: "Instagram" },
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -762,7 +768,7 @@ function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio inquiry from ${formData.name}`);
+    const subject = encodeURIComponent(formData.subject || `Portfolio inquiry from ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
@@ -772,87 +778,161 @@ function Contact() {
 
   return (
     <section id="contact" className="mx-auto max-w-7xl px-6 py-20">
-      <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/20 via-card/40 to-accent-glow/20 p-10 text-center backdrop-blur md:p-16">
-        <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-primary/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-accent-glow/30 blur-3xl" />
-        <p className="relative text-xs font-semibold uppercase tracking-widest text-primary">Let's work together</p>
-        <h2 className="relative mt-3 text-3xl font-bold sm:text-5xl">Have a project in mind?</h2>
-        <p className="relative mx-auto mt-4 max-w-xl text-muted-foreground">
-          I'm always open to discussing new projects and opportunities. Let's create something amazing together.
+      <div className="mb-12">
+        <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-glow" />
+          <span className="text-xs font-semibold uppercase tracking-widest text-primary">Contact</span>
+        </div>
+        <h2 className="mt-6 text-4xl font-bold sm:text-6xl">
+          Let's{" "}
+          <span className="bg-gradient-to-r from-primary to-accent-glow bg-clip-text text-transparent">
+            Work Together
+          </span>
+        </h2>
+        <p className="mt-4 max-w-xl text-muted-foreground">
+          Have a project in mind or just want to say hi? My inbox is always open.
         </p>
+      </div>
 
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* Form card */}
         <form
           onSubmit={handleSubmit}
-          className="relative mx-auto mt-10 flex max-w-xl flex-col gap-4 text-left"
+          className="rounded-2xl border border-border/60 bg-card/40 p-6 backdrop-blur sm:p-8"
         >
           <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="mb-2 block text-xs font-semibold">Full Name</label>
+              <input
+                type="text"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Wacky Hojilla"
+                className="w-full rounded-xl border border-border/60 bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary/60"
+              />
+            </div>
+            <div>
+              <label className="mb-2 block text-xs font-semibold">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="name@email.com"
+                className="w-full rounded-xl border border-border/60 bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary/60"
+              />
+            </div>
+          </div>
+          <div className="mt-4">
+            <label className="mb-2 block text-xs font-semibold">Subject</label>
             <input
               type="text"
-              name="name"
-              required
-              value={formData.name}
+              name="subject"
+              value={formData.subject}
               onChange={handleChange}
-              placeholder="Your Name"
-              className="rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none backdrop-blur transition-colors focus:border-primary/50"
-            />
-            <input
-              type="email"
-              name="email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Your Email"
-              className="rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none backdrop-blur transition-colors focus:border-primary/50"
+              placeholder="Project inquiry, collaboration..."
+              className="w-full rounded-xl border border-border/60 bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary/60"
             />
           </div>
-          <textarea
-            name="message"
-            required
-            rows={5}
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Your Message"
-            className="resize-none rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none backdrop-blur transition-colors focus:border-primary/50"
-          />
+          <div className="mt-4">
+            <label className="mb-2 block text-xs font-semibold">Message</label>
+            <textarea
+              name="message"
+              required
+              rows={5}
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Tell me about your project or idea..."
+              className="w-full resize-none rounded-xl border border-border/60 bg-background/40 px-4 py-3 text-sm outline-none transition-colors focus:border-primary/60"
+            />
+          </div>
           <button
             type="submit"
-            className="mx-auto inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent-glow px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
           >
-            <Mail className="h-4 w-4" /> Send Message
+            <Send className="h-4 w-4" /> Send Message
           </button>
           {status === "sent" && (
-            <p className="mx-auto text-sm text-primary">
+            <p className="mt-3 text-center text-sm text-primary">
               Your email client should now be open — just hit send!
             </p>
           )}
         </form>
 
-        <div className="relative mt-8 flex flex-wrap justify-center gap-4">
+        {/* Info column */}
+        <div className="flex flex-col gap-4">
+          <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-5">
+            <div className="flex items-center gap-3">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+              </span>
+              <div>
+                <p className="font-semibold text-emerald-400">Available for work</p>
+                <p className="text-sm text-muted-foreground">Open to freelance & full-time roles</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Contact Info</p>
+
           <a
             href="mailto:wackyhojilla13@gmail.com"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
+            className="group flex items-center gap-4 rounded-2xl border border-border/60 bg-card/40 p-5 transition-colors hover:border-primary/50"
           >
-            <Mail className="h-4 w-4" /> Get in Touch
+            <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/15 text-primary">
+              <Mail className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground">Email</p>
+              <p className="font-semibold">wackyhojilla13@gmail.com</p>
+            </div>
           </a>
-          <div className="flex items-center gap-3">
+
+          <a
+            href="tel:+639305620165"
+            className="group flex items-center gap-4 rounded-2xl border border-border/60 bg-card/40 p-5 transition-colors hover:border-primary/50"
+          >
+            <div className="grid h-11 w-11 place-items-center rounded-xl bg-blue-500/15 text-blue-400">
+              <Phone className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground">Phone</p>
+              <p className="font-semibold">+63 930 562 0165</p>
+            </div>
+          </a>
+
+          <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Find Me On</p>
+          <div className="grid grid-cols-2 gap-3">
             {socials.map(({ Icon, href, label }, i) => (
               <a
                 key={i}
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                aria-label={label}
-                className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card/60 text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/40 px-4 py-3 text-sm font-medium transition-colors hover:border-primary/50 hover:text-primary"
               >
                 <Icon className="h-4 w-4" />
+                {label}
               </a>
             ))}
+          </div>
+
+          <div className="mt-2 flex items-center gap-3 rounded-2xl border border-border/60 bg-card/40 px-5 py-4">
+            <Clock className="h-4 w-4 text-muted-foreground" />
+            <p className="text-sm text-muted-foreground">
+              Usually responds within <span className="font-semibold text-foreground">24 hours</span>
+            </p>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Footer() {
   return (
