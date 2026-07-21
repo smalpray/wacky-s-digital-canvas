@@ -230,7 +230,7 @@ function Header() {
         </a>
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (
-            <a
+            
               key={n.href}
               href={n.href}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -239,7 +239,7 @@ function Header() {
             </a>
           ))}
         </nav>
-        <a
+        
           href="#contact"
           className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-5 py-2 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:scale-105 md:inline-flex"
         >
@@ -253,16 +253,13 @@ function Header() {
 function Hero() {
   return (
     <section id="home" className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden pt-16 lg:pt-20">
-      {/* Ambient glow backgrounds scaled to fill screen */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/20 blur-[160px] sm:h-[800px] sm:w-[800px]" />
         <div className="absolute right-0 top-1/4 h-[400px] w-[400px] rounded-full bg-accent-glow/20 blur-[160px] sm:h-[600px] sm:w-[600px]" />
       </div>
 
-      {/* Main Grid Content - Expanding to max screen width */}
       <div className="mx-auto grid w-full max-w-[92vw] flex-1 grid-cols-1 items-center gap-8 px-4 py-8 sm:px-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:py-12">
 
-        {/* Left Side: Typography & Actions */}
         <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">
             <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
@@ -281,13 +278,13 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-5 lg:justify-start">
-            <a
+            
               href="#projects"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
             >
               View My Work <ArrowRight className="h-5 w-5" />
             </a>
-            <a
+            
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-7 py-3.5 text-base font-semibold text-foreground backdrop-blur transition-colors hover:bg-card"
             >
@@ -313,15 +310,12 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right Side: Scaled Image Hero Asset */}
         <div className="relative order-1 flex items-center justify-center lg:order-2">
           <div className="relative flex w-full max-w-[500px] items-center justify-center sm:max-w-[650px] lg:max-w-[800px]">
-            {/* Enlarged backdrop glow */}
             <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
               <div className="h-[450px] w-[450px] rounded-full bg-gradient-to-br from-primary/50 via-accent-glow/40 to-primary/20 blur-3xl sm:h-[600px] sm:w-[600px] lg:h-[700px] lg:w-[700px]" />
             </div>
 
-            {/* Decorative dot grid */}
             <div
               className="pointer-events-none absolute -right-4 top-2 h-24 w-24 opacity-60 sm:h-36 sm:w-36"
               style={{
@@ -330,14 +324,12 @@ function Hero() {
               }}
             />
 
-            {/* Maximized Hero Image */}
             <img
               src={heroLogoImage}
               alt="Wakin — Full Stack Web Developer"
               className="relative z-10 h-auto max-h-[65vh] w-full object-contain drop-shadow-2xl transition-transform hover:scale-[1.02]"
             />
 
-            {/* Floating Code Snippet Card */}
             <div className="absolute -bottom-4 -left-6 z-20 hidden max-w-[280px] rounded-xl border border-border bg-card/90 p-4 font-mono text-xs shadow-2xl backdrop-blur lg:block">
               <div className="mb-2 flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-destructive/80" />
@@ -360,7 +352,6 @@ function Hero() {
 
       </div>
 
-      {/* Stats bar pinned nicely across full width at bottom */}
       <div className="mx-auto w-full max-w-[92vw] px-4 pb-6 sm:px-8 sm:pb-8">
         <div className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-card/40 p-5 backdrop-blur md:grid-cols-4 lg:p-6">
           {STATS.map((s) => (
@@ -582,7 +573,6 @@ function Projects() {
       <SectionHeading eyebrow="Featured Work" title="Some of My Recent Work" />
 
       <div className="relative mt-14">
-        {/* Progress indicator */}
         <div className="mb-8 flex items-center gap-4">
           <span className="font-mono text-sm text-muted-foreground">
             {String(idx + 1).padStart(2, "0")}
@@ -686,7 +676,6 @@ function Projects() {
           </div>
         </div>
 
-        {/* Controls */}
         <div className="mt-8 flex items-center justify-between">
           <div className="flex gap-1.5">
             {PROJECTS.map((_, i) => (
@@ -733,7 +722,6 @@ function Expertise() {
             key={e.title}
             className="group relative overflow-hidden rounded-2xl border border-border/60 bg-card/30 p-7 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
           >
-            {/* Ambient glow on hover */}
             <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-primary/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
             <div className="flex items-start justify-between">
@@ -793,7 +781,6 @@ function Contact() {
           I'm always open to discussing new projects and opportunities. Let's create something amazing together.
         </p>
 
-        {/* Contact Form */}
         <form
           onSubmit={handleSubmit}
           className="relative mx-auto mt-10 flex max-w-xl flex-col gap-4 text-left"
@@ -866,6 +853,7 @@ function Contact() {
     </section>
   );
 }
+
 function Footer() {
   return (
     <footer className="border-t border-border/60 py-8">
