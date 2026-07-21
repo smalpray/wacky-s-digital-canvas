@@ -759,11 +759,28 @@ function Expertise() {
 }
 
 function Contact() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sent">("idle");
+
   const socials = [
     { Icon: Github, href: "https://github.com/", label: "GitHub" },
     { Icon: Linkedin, href: "https://www.linkedin.com/in/wacky-hojilla-088761328/", label: "LinkedIn" },
     { Icon: Mail, href: "mailto:wackyhojilla13@gmail.com", label: "Email" },
   ];
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Portfolio inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:wackyhojilla13@gmail.com?subject=${subject}&body=${body}`;
+    setStatus("sent");
+  };
 
   return (
     <section id="contact" className="mx-auto max-w-7xl px-6 py-20">
@@ -775,6 +792,54 @@ function Contact() {
         <p className="relative mx-auto mt-4 max-w-xl text-muted-foreground">
           I'm always open to discussing new projects and opportunities. Let's create something amazing together.
         </p>
+
+        {/* Contact Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="relative mx-auto mt-10 flex max-w-xl flex-col gap-4 text-left"
+        >
+          <div className="grid gap-4 sm:grid-cols-2">
+            <input
+              type="text"
+              name="name"
+              required
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              className="rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none backdrop-blur transition-colors focus:border-primary/50"
+            />
+            <input
+              type="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email"
+              className="rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none backdrop-blur transition-colors focus:border-primary/50"
+            />
+          </div>
+          <textarea
+            name="message"
+            required
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Your Message"
+            className="resize-none rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none backdrop-blur transition-colors focus:border-primary/50"
+          />
+          <button
+            type="submit"
+            className="mx-auto inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
+          >
+            <Mail className="h-4 w-4" /> Send Message
+          </button>
+          {status === "sent" && (
+            <p className="mx-auto text-sm text-primary">
+              Your email client should now be open — just hit send!
+            </p>
+          )}
+        </form>
+
         <div className="relative mt-8 flex flex-wrap justify-center gap-4">
           
             href="mailto:wackyhojilla13@gmail.com"
@@ -801,7 +866,6 @@ function Contact() {
     </section>
   );
 }
-
 function Footer() {
   return (
     <footer className="border-t border-border/60 py-8">
