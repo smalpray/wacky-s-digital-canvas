@@ -278,13 +278,13 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-5 lg:justify-start">
-            
+            <a
               href="#projects"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
             >
               View My Work <ArrowRight className="h-5 w-5" />
             </a>
-            
+            <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-7 py-3.5 text-base font-semibold text-foreground backdrop-blur transition-colors hover:bg-card"
             >
