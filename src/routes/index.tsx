@@ -828,7 +828,7 @@ function Contact() {
         </form>
 
         <div className="relative mt-8 flex flex-wrap justify-center gap-4">
-          
+          <a
             href="mailto:wackyhojilla13@gmail.com"
             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent-glow px-7 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:scale-105"
           >
@@ -836,7 +836,7 @@ function Contact() {
           </a>
           <div className="flex items-center gap-3">
             {socials.map(({ Icon, href, label }, i) => (
-              
+              <a
                 key={i}
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
