@@ -564,154 +564,70 @@ function TechCarousel() {
 }
 
 function Projects() {
-  const [idx, setIdx] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const total = PROJECTS.length;
-
-  const go = (d: number) => {
-    setDirection(d);
-    setIdx((i) => (i + d + total) % total);
-  };
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="mx-auto max-w-7xl px-6 py-24">
+    <section id="projects" ref={ref} className="mx-auto max-w-7xl px-6 py-24">
       <SectionHeading eyebrow="Featured Work" title="Some of My Recent Work" />
 
-      <div className="relative mt-14">
-        <div className="mb-8 flex items-center gap-4">
-          <span className="font-mono text-sm text-muted-foreground">
-            {String(idx + 1).padStart(2, "0")}
-          </span>
-          <div className="h-px flex-1 bg-border">
-            <div
-              className="h-px bg-primary transition-all duration-500 ease-out"
-              style={{ width: `${((idx + 1) / total) * 100}%` }}
-            />
-          </div>
-          <span className="font-mono text-sm text-muted-foreground">
-            {String(total).padStart(2, "0")}
-          </span>
-        </div>
+      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {PROJECTS.map((p, i) => {
+          const Tag: "a" | "article" = p.url ? "a" : "article";
+          const linkProps = p.url
+            ? { href: p.url, target: "_blank", rel: "noopener noreferrer" }
+            : {};
+          return (
+            <Tag
+              key={p.n}
+              {...linkProps}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/30 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
+              style={{
+                transitionDelay: inView ? `${i * 100}ms` : "0ms",
+                opacity: inView ? 1 : 0,
+                transform: inView ? "translateY(0)" : "translateY(20px)",
+              }}
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-background/60 to-background/20">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-60" />
+                <span className="absolute left-4 top-4 rounded-full bg-background/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground backdrop-blur-md ring-1 ring-border/50">
+                  {p.n}
+                </span>
+              </div>
 
-        <div className="overflow-hidden rounded-2xl">
-          <div
-            className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-            style={{ transform: `translateX(-${idx * 100}%)` }}
-          >
-            {PROJECTS.map((p) => {
-              const Tag: "a" | "article" = p.url ? "a" : "article";
-              const linkProps = p.url
-                ? { href: p.url, target: "_blank", rel: "noopener noreferrer" }
-                : {};
-              return (
-                <div key={p.n} className="w-full shrink-0 px-1.5">
-                  <Tag
-                    {...linkProps}
-                    className="group grid gap-0 overflow-hidden rounded-2xl border border-border/60 bg-card/30 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 lg:grid-cols-2"
-                  >
-                    <div className="relative overflow-hidden bg-gradient-to-br from-background/60 to-background/20">
-                      <img
-                        src={p.image}
-                        alt={p.title}
-                        width={1280}
-                        height={800}
-                        loading="lazy"
-                        className="h-64 w-full object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-[1.03] lg:h-full"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                    </div>
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="text-lg font-semibold leading-tight tracking-tight">
+                  {p.title}
+                </h3>
+                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                  {p.tagline}
+                </p>
 
-                    <div className="flex flex-col p-8">
-                      <div className="flex items-center gap-3">
-                        <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20">
-                          <p.icon className="h-4 w-4" />
-                        </div>
-                        <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                          Project {p.n} of {total}
-                        </p>
-                      </div>
-
-                      <h3 className="mt-5 flex items-start gap-2 text-2xl font-semibold leading-tight tracking-tight">
-                        <span>{p.title}</span>
-                        {p.url && (
-                          <ExternalLink className="mt-1.5 h-4 w-4 shrink-0 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
-                        )}
-                      </h3>
-                      <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
-                        {p.tagline}
-                      </p>
-
-                      <div className="mt-6">
-                        <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/70">
-                          Key Features
-                        </p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {p.features.map((f) => (
-                            <span
-                              key={f}
-                              className="rounded-md border border-border/60 bg-background/50 px-2.5 py-1 text-xs text-foreground/80"
-                            >
-                              {f}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="mt-auto pt-6">
-                        <div className="border-t border-border/50 pt-5">
-                          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/70">
-                            Project Goal
-                          </p>
-                          <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                            {p.goal}
-                          </p>
-                          {p.url && (
-                            <p className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                              Visit live site
-                              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </Tag>
+                <div className="mt-auto pt-5">
+                  {p.url ? (
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-all group-hover:gap-2.5">
+                      View Project
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
+                      Case Study
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  )}
                 </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="mt-8 flex items-center justify-between">
-          <div className="flex gap-1.5">
-            {PROJECTS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { setDirection(i > idx ? 1 : -1); setIdx(i); }}
-                aria-label={`Go to project ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary ${
-                  i === idx ? "w-6 bg-primary" : "w-1.5 bg-border hover:bg-muted-foreground/40"
-                }`}
-              />
-            ))}
-          </div>
-
-          <div className="flex gap-2">
-            <button
-              onClick={() => go(-1)}
-              aria-label="Previous project"
-              className="grid h-10 w-10 place-items-center rounded-full border border-border/60 text-foreground/70 transition-all hover:border-primary/40 hover:bg-primary/5 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              onClick={() => go(1)}
-              aria-label="Next project"
-              className="grid h-10 w-10 place-items-center rounded-full border border-border/60 text-foreground/70 transition-all hover:border-primary/40 hover:bg-primary/5 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
+              </div>
+            </Tag>
+          );
+        })}
       </div>
     </section>
   );
