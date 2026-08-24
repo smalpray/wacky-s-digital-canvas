@@ -6,8 +6,9 @@ import heroLogoImage from "@/assets/wacky-logo.png";
 import projBmisImage from "@/assets/bmis-image.png";
 import projRoofLogo from "@/assets/roof-logo.png";
 import projGym from "@/assets/project-gymsyn.jpg";
-import projTicket from "@/assets/project-ticketing.jpg";
-import projErp from "@/assets/project-erp.jpg";
+import projTicket from "@/assets/eo-unified-mis.png";
+
+import projErp from "@/assets/myempire.png";
 
 import {
   Code2,
@@ -165,7 +166,7 @@ const PROJECTS = [
   {
     n: "04",
     icon: Ticket,
-    image: projEoUnifiedMis,
+    image: projTicket,
     title: "EmpireOne Ticketing System",
     tagline: "Internal service desk that streamlines cross-department issue resolution.",
      url: "https://www.eo-unified-ims.com/",
@@ -183,7 +184,7 @@ const PROJECTS = [
   {
     n: "05",
     icon: Boxes,
-    image: projMyEmpire,
+    image: projErp,
     title: "EmpireOne Unified System (ERP)",
     tagline: "Enterprise platform unifying HR, TA, Accounting, Payroll, and Inventory.",
      url: "https://careers.empireonecx.com/",
