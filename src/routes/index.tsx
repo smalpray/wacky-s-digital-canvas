@@ -168,6 +168,7 @@ const PROJECTS = [
     image: projTicket,
     title: "EmpireOne Ticketing System",
     tagline: "Internal service desk that streamlines cross-department issue resolution.",
+     url: "https://www.eo-unified-ims.com/",
     features: [
       "IT Support Ticket Management",
       "Department Request Submission",
@@ -185,6 +186,7 @@ const PROJECTS = [
     image: projErp,
     title: "EmpireOne Unified System (ERP)",
     tagline: "Enterprise platform unifying HR, TA, Accounting, Payroll, and Inventory.",
+     url: "https://careers.empireonecx.com/",
     features: [
       "Employee Management",
       "Recruitment & Applicant Tracking",
