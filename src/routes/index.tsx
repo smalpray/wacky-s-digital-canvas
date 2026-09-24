@@ -693,7 +693,7 @@ function Contact() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
 
   const socials = [
-    { Icon: Github, href: "https://github.com/", label: "GitHub" },
+    { Icon: Github, href: "/", label: "GitHub" },
     { Icon: Linkedin, href: "https://www.linkedin.com/in/wacky-hojilla-088761328/", label: "LinkedIn" },
     { Icon: Twitter, href: "https://twitter.com/", label: "Twitter" },
     { Icon: Instagram, href: "https://instagram.com/", label: "Instagram" },
